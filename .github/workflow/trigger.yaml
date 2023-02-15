@@ -1,5 +1,7 @@
 name: Trigger another repo
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       repo_name: app2
