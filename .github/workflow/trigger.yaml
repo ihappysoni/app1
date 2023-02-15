@@ -1,0 +1,17 @@
+name: Trigger another repo
+on:
+  workflow_dispatch:
+    inputs:
+      repo_name: app2
+        description: 'app2'
+        required: true
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger another repo
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: ${{ github.event.inputs.repo_name }}
+          event-type: trigger-another-repo
